@@ -13,15 +13,22 @@ You can install the `tune-corpus` module either from [GitHub](https://github.org
 
 ```{shell}
 python -m pip install git+https://github.com/MindMimicLabs/tune-corpus.git
---- or ---
+```
+```{shell}
 python -m pip install ./tune-corpus
 ```
 
 ## Usage
 
+You can use the `tune-corpus` module either from within your own Python module or from the command line.
+I choose `d:/corpus_in` + `d:/corpus_out` as my input paths, you may want to select something different.
+
 ```{python}
 from tuning import Tuning
 
 t = Tuning(path_in)
-t.tune(path_out)
+t.tune_corpus(path_out)
+```
+```{shell}
+python python -c "from tuning import Tuning; Tuning('d:/corpus_in').tune_corpus('d:/corpus_out')"
 ```

@@ -10,19 +10,19 @@ with open(path.join(here, 'requirements.txt'), encoding='utf-8') as f:
 setup(
     name = 'tune-corpus',
     version = '0.0.1',
-    description = 'xxx',
+    description = 'Corpus tuning for iterative Deep Learning',
     long_description = long_description,
     long_description_content_type = 'text/markdown',
     url = 'https://github.com/MindMimicLabs/tune-corpus',
     author = '@markanewman, @jkorn81',
     classifiers = [
         'Development Status :: 3 - Alpha',
-        'Intended Audience :: Linguists',
-        'Topic :: Language Processing',
+        'Intended Audience :: Deep Learning',
+        'Topic :: Corpus Tools',
         'License :: MIT',
         'Programming Language :: Python :: 3'
     ],
-    keywords = 'language-processing',
+    keywords = 'corpus-tools',
     packages = find_packages(exclude=['contrib', 'docs', 'tests']),
     python_requires='>=3.5, <4',
     install_requires = requirements,
