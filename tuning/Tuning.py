@@ -53,7 +53,7 @@ class Tuning:
                 if len(line) > 0:
                     grade_level = self.__median_grade_level_by_line(line)
                     self.__save_line_to_grade_level(path_out, line, grade_level)
-                pb_i = pb_i + 1                
+                pb_i = pb_i + 1
 
     # calculate a single `grade_level` based on the 8 known measures
     # median is chosen over mean because the 8 measures are known to be not normally distributed
@@ -114,18 +114,9 @@ class Tuning:
     # repeat everything till you have enough text
     def __fluff_line(self, line: str) -> str:
         words = line.split()
-        words = [self.__clean_words(word) for word in words]
-        words = [word for word in words if len(word) > 0]
-        words[-1] = f'{words[-1]}.'
-        words = words * max(30, int(100/len(words)) + 1)        
+        words = words * max(30, int(200/len(words)) + 1)        
         line = ' '.join(words)
         return line
-
-    # strip out all the punction
-    def __clean_words(self, word: str) -> str:
-        letters = [x for x in word if x not in string.punctuation]
-        word = ''.join(letters).strip()
-        return word
     
     # saves the line to a file based on grade_level
     def __save_line_to_grade_level(self, path_out: pathlib.Path, line: str, grade_level: int) -> None:
