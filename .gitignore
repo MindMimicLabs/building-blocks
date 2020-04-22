@@ -1,0 +1,12 @@
+# IDE
+.vscode/
+
+# Python cache
+__pycache__
+.pytest_cache
+
+# Python editmode
+tune-corpus.egg-info
+
+# WinMerge
+*.bak

@@ -1,0 +1,2 @@
+progressbar2==3.47.0
+py-readability-metrics>=1.4.4
