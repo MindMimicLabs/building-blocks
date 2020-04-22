@@ -62,49 +62,84 @@ class Tuning:
         r = Readability(line)
         grade_levels = [
             self.__ari(r),
-            float(r.coleman_liau().grade_level),
+            self.__coleman_liau(r),
             self.__dale_chall(r),
-            float(r.flesch_kincaid().grade_level),
+            self.__flesch_kincaid(r),
             self.__gunning_fog(r),    
-            float(r.linsear_write().grade_level),        
+            self.__linsear_write(r),        
             self.__smog(r),
-            float(r.spache().grade_level)]
+            self.__spache(r)]
         grade_levels = [min(17, max(0, x)) for x in grade_levels if x != None]
+        if len(grade_levels) == 0:
+            return None
         grade_level = stat.median(grade_levels)
         return round(grade_level)
 
     # at the low and high end, `grade_level` offen does not make sense
     def __ari(self, r: Readability) -> float:
-        lvls = r.ari().grade_levels        
-        if 'college_graduate' in lvls:
-            return 17
-        elif 'college' in lvls:
-            return 13
-        elif 'K' in lvls:
-            return 0
-        else:
-            return stat.mean([float(lvl) for lvl in lvls])
-    def __dale_chall(self, r: Readability) -> float:
-        lvls = r.dale_chall().grade_levels        
-        if 'college_graduate' in lvls:
-            return 17
-        elif 'college' in lvls:
-            return 13
-        else:
-            return stat.mean([float(lvl) for lvl in lvls])
-    def __gunning_fog(self, r: Readability) -> float:
-        lvl = r.gunning_fog().grade_level
-        if lvl == 'college_graduate':
-            return 17
-        elif lvl == 'college':
-            return 13
-        elif lvl == 'na':
-            return 0
-        else:
+        try:
+            lvls = r.ari().grade_levels        
+            if 'college_graduate' in lvls:
+                return 17
+            elif 'college' in lvls:
+                return 13
+            elif 'K' in lvls:
+                return 0
+            else:
+                return stat.mean([float(lvl) for lvl in lvls])
+        except ReadabilityException:
+            return None
+    def __coleman_liau(self, r: Readability) -> float:
+        try:
+            lvl = r.coleman_liau().grade_level
             return float(lvl)
+        except ReadabilityException:
+            return None
+    def __dale_chall(self, r: Readability) -> float:
+        try:
+            lvls = r.dale_chall().grade_levels        
+            if 'college_graduate' in lvls:
+                return 17
+            elif 'college' in lvls:
+                return 13
+            else:
+                return stat.mean([float(lvl) for lvl in lvls])
+        except ReadabilityException:
+            return None
+    def __flesch_kincaid(self, r: Readability) -> float:
+        try:
+            lvl = r.flesch_kincaid().grade_level
+            return float(lvl)
+        except ReadabilityException:
+            return None
+    def __gunning_fog(self, r: Readability) -> float:
+        try:
+            lvl = r.gunning_fog().grade_level
+            if lvl == 'college_graduate':
+                return 17
+            elif lvl == 'college':
+                return 13
+            elif lvl == 'na':
+                return 0
+            else:
+                return float(lvl)
+        except ReadabilityException:
+            return None
+    def __linsear_write(self, r: Readability) -> float:
+        try:
+            lvl = r.linsear_write().grade_level
+            return float(lvl)
+        except ReadabilityException:
+            return None
     def __smog(self, r: Readability) -> float:
         try:
             lvl = r.smog(all_sentences = True).grade_level
+            return float(lvl)
+        except ReadabilityException:
+            return None
+    def __spache(self, r: Readability) -> float:
+        try:
+            lvl = r.spache().grade_level
             return float(lvl)
         except ReadabilityException:
             return None
