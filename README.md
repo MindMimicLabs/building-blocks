@@ -15,9 +15,9 @@ All scripts follow the same execution path.
 
 1. Open a command prompt
 2. Change into the directory of the script
-3. Get any prerequsits that may be needed by running `pip install -r requirements.txt`
+3. Get any prerequisites that may be needed by running `pip install -r requirements.txt`
 4. Run `python process.py -in d:/corpus_in -out d:/corpus_out`.
-   You should chang the input and output paths as desired.
+   You should change the input and output paths as desired.
 
 The list of current scripts is below.
 In general, you want to run [documents-to-corpus](./documents-to-corpus) then other scripts.
