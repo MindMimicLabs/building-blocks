@@ -164,17 +164,18 @@ def __spache(r: Readability) -> float:
   
 # saves the sentences to grade level aproate files
 def __save_new_documents(path_out: pathlib.Path, sentences: list) -> None:
-    min_grade_level = min(sentence.grade_level for sentence in sentences)
-    max_grade_level = max(sentence.grade_level for sentence in sentences)
+    grade_levels = list(set(sentence.grade_level for sentence in sentences))
     widgets = ['Saving by grade level: ', pb.Percentage(), ' ', pb.Bar(marker = '.', left = '[', right = ']'), ' ', pb.ETA()]
-    with pb.ProgressBar(widgets = widgets, max_value = max_grade_level + 1 - min_grade_level) as bar:
-        for grade_level in range(min_grade_level, max_grade_level + 1):
-            bar.update(grade_level - min_grade_level)
+    with pb.ProgressBar(widgets = widgets, max_value = len(grade_levels)) as bar:
+        gl_i = 0
+        for grade_level in grade_levels:
+            bar.update(gl_i)
             file_out = path_out.joinpath(f'grade_level.{grade_level}.txt')
             with file_out.open('a', encoding = 'utf-8') as file_out:
                 for sentence in sentences:
                     if sentence.grade_level == grade_level:
                         file_out.write(f'{sentence.text}\n')
+            gl_i = gl_i + 1
 
 if __name__ == '__main__':
     parser = ArgumentParser()
