@@ -180,11 +180,11 @@ if __name__ == '__main__':
     parser = ArgumentParser()
     parser.add_argument(
         '-in', '--folder-in',
-        help = 'Folder containing the raw JATS files',
+        help = 'Folder containing the source corpus',
         default = 'd:/corpus_in')
     parser.add_argument(
         '-out', '--folder-out',
-        help = 'Folder containing the newly created text corpus',
+        help = 'Folder containing the by grade level corpus',
         default = 'd:/corpus_out')
     args = parser.parse_args()
     print(f'folder in: {args.folder_in}')
