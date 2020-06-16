@@ -1,4 +1,4 @@
-# Corpus Tools
+# Building Blocks
 
 ![Python](https://img.shields.io/badge/python-3.x-blue.svg)
 ![MIT license](https://img.shields.io/badge/License-MIT-green.svg)
