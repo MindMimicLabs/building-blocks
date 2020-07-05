@@ -13,7 +13,7 @@ In the case where extensive evaluation is undertaken, it is appropriate to copy/
 
 ## Run the script
 
-The script is run in accordance with the [general form](../#scripts)
+The script is run in accordance with the [general form](../README.md#scripts)
 
 ## Academic Boilerplate
 

@@ -11,7 +11,7 @@ The documentation will include both instructions as to what the code is for, how
 
 ## Scripts
 
-All scripts follow the same execution path.
+Unless otherwise noted, all scripts follow the same execution path.
 
 1. Open a command prompt
 2. Change into the directory of the script
@@ -20,8 +20,8 @@ All scripts follow the same execution path.
    You should change the input and output paths as desired.
 
 The list of current scripts is below.
-In general, you want to run [documents-to-corpus](./documents-to-corpus) then other scripts.
-The individual project will instruct on the order. 
+In general, you want to first run [documents-to-corpus](./documents-to-corpus), then other scripts.
+Individual papers/projects/repos will instruct on the exact order in their `README.md`'s **Tabula Rasa** section. 
 
 1. [documents-to-corpus](./documents-to-corpus)
 2. [corpus-to-reading-level](./corpus-to-reading-level)
