@@ -4,14 +4,15 @@ from nltk.tokenize.punkt import PunktSentenceTokenizer
 from nltk.tokenize.treebank import TreebankWordTokenizer
 import pathlib
 import progressbar as pb
+import utils as u
 
 sent_tokenize = PunktSentenceTokenizer()
 word_tokenize = TreebankWordTokenizer()
 
 # Iterates over all the documents in a corpus creating a new collection of sentence tokenized documents
 def documents_to_corpus(path_in: pathlib.Path, path_out: pathlib.Path) -> None:
-    __is_folder_readable(path_in)
-    __is_folder_writable(path_out)
+    u.is_folder_readable(path_in)
+    u.is_folder_writable(path_out)
     i = 1
     widgets = [ 'Converting File # ', pb.Counter(), ' ', pb.Timer(), ' ', pb.BouncingBar(marker = '.', left = '[', right = ']')]
     with pb.ProgressBar(widgets = widgets) as bar:
@@ -24,18 +25,6 @@ def documents_to_corpus(path_in: pathlib.Path, path_out: pathlib.Path) -> None:
                 with file_out.open('w', encoding = 'utf-8') as file_out:
                     for sentence in sentences:
                         file_out.write(f'{sentence}\n')
-
-# makes sure our parameters are good
-def __is_folder_readable(folder: pathlib.Path) -> None:
-    if not folder.exists():
-        raise FileNotFoundError(str(folder))
-    elif not folder.is_dir():
-        raise NotADirectoryError(str(folder))
-def __is_folder_writable(folder: pathlib.Path) -> None:
-    if not folder.exists():
-        folder.mkdir(parents = True)
-    elif not folder.is_dir():
-        raise NotADirectoryError(str(folder))
 
 # Run Punkt then PENN Treebank to clean up sentences
 def __tokenize_document(document_name: pathlib.Path) -> list:

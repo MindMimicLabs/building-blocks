@@ -5,6 +5,7 @@ from readability.exceptions import ReadabilityException
 import pathlib
 import progressbar as pb
 import statistics as stat
+import utils as u
 import string
 import time
 
@@ -12,8 +13,8 @@ sentenceplus = namedtuple('sentenceplus', 'text grade_level')
 
 # Iterates over all the documents in a corpus creating a new collection of documents on a per grade level basis.
 def corpus_to_reading_level(path_in: pathlib.Path, path_out: pathlib.Path) -> None:
-    __is_folder_readable(path_in)
-    __is_folder_writable(path_out)
+    u.is_folder_readable(path_in)
+    u.is_folder_writable(path_out)
     start = time.time()
     __clean_grade_level_files(path_out)
     doc_cnt = 0
@@ -28,18 +29,6 @@ def corpus_to_reading_level(path_in: pathlib.Path, path_out: pathlib.Path) -> No
         print(f'Processed (seconds/document): {int(seconds):,}/{doc_cnt:,} = {int(seconds/doc_cnt):,} spd')
     else:
         print(f'No text documents found in {path_in}')
-
-# makes sure our parameters are good
-def __is_folder_readable(folder: pathlib.Path) -> None:
-    if not folder.exists():
-        raise FileNotFoundError(str(folder))
-    elif not folder.is_dir():
-        raise NotADirectoryError(str(folder))
-def __is_folder_writable(folder: pathlib.Path) -> None:
-    if not folder.exists():
-        folder.mkdir(parents = True)
-    elif not folder.is_dir():
-        raise NotADirectoryError(str(folder))
 
 # clean out any previous run
 def __clean_grade_level_files(path_out: pathlib.Path) -> None:
