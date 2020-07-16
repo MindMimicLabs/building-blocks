@@ -1,2 +1,0 @@
-progressbar2==3.47.0
-typeguard==2.7.1

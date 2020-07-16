@@ -1,2 +1,4 @@
+nltk==3.4.5
 progressbar2==3.47.0
 py-readability-metrics>=1.4.4
+typeguard==2.7.1
