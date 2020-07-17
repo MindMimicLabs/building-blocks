@@ -25,3 +25,4 @@ Individual papers/projects/repos will instruct on the exact order in their `READ
 1. [documents-to-corpus](./docs/documents-to-corpus.md)
 2. [corpus-to-reading-level](./docs/corpus-to-reading-level.md)
 3. [re-encode-corpus](./docs/re-encode-corpus.md)
+4. [(un)nest-corpus](./docs/unnest-corpus.md)
