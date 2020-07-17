@@ -11,13 +11,13 @@ word_tokenize = TreebankWordTokenizer()
 
 # Iterates over all the documents in a corpus creating a new collection of sentence tokenized documents
 def documents_to_corpus(path_in: pathlib.Path, path_out: pathlib.Path) -> None:
-    u.is_folder_readable(path_in)
-    u.is_folder_writable(path_out)
+    u.assert_folder_is_readable(path_in)
+    u.assert_folder_is_writable(path_out)
     i = 1
     widgets = [ 'Converting File # ', pb.Counter(), ' ', pb.Timer(), ' ', pb.BouncingBar(marker = '.', left = '[', right = ']')]
     with pb.ProgressBar(widgets = widgets) as bar:
         for file_name in path_in.iterdir():
-            if file_name.is_file() and file_name.suffix.lower() == '.txt':
+            if u.is_corpus_document(file_name):
                 bar.update(i)
                 i = i + 1
                 sentences = __tokenize_document(file_name)

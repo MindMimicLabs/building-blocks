@@ -13,13 +13,13 @@ sentenceplus = namedtuple('sentenceplus', 'text grade_level')
 
 # Iterates over all the documents in a corpus creating a new collection of documents on a per grade level basis.
 def corpus_to_reading_level(path_in: pathlib.Path, path_out: pathlib.Path) -> None:
-    u.is_folder_readable(path_in)
-    u.is_folder_writable(path_out)
+    u.assert_folder_is_readable(path_in)
+    u.assert_folder_is_writable(path_out)
     start = time.time()
     __clean_grade_level_files(path_out)
     doc_cnt = 0
     for file_name in path_in.iterdir():
-        if file_name.is_file() and file_name.suffix.lower() == '.txt':
+        if u.is_corpus_document(file_name):
             print(file_name.stem)
             sentences = __document_to_sentences(file_name)
             __save_new_documents(path_out, sentences)
