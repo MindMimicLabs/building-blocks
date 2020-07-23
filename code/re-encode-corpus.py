@@ -44,7 +44,7 @@ if __name__ == '__main__':
         default = 'd:/corpus_in')
     parser.add_argument(
         '-out', '--folder-out',
-        help = 'Folder containing the re-encoded documents',
+        help = 'Folder containing the transformed corpus',
         default = 'd:/corpus_out')
     args = parser.parse_args()
     print(f'folder in: {args.folder_in}')

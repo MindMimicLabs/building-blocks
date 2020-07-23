@@ -4,7 +4,7 @@ import utils as u
 from argparse import ArgumentParser
 from typeguard import typechecked
 
-# Iterates over all the documents in a corpus, transforming them to only lowercase
+# Iterates over all the documents in a corpus, transforming them by applying `__lowercase_document()`
 @typechecked
 def lowercase_corpus(path_in: pathlib.Path, path_out: pathlib.Path) -> None:
     u.assert_folder_is_readable(path_in)
@@ -22,7 +22,7 @@ def lowercase_corpus(path_in: pathlib.Path, path_out: pathlib.Path) -> None:
                     for sentence in sentences:
                         file_out.write(f'{sentence}\n')
 
-# transforms a single document to only lowercase
+# Transforms a single document by lowercaseing all the lines
 @typechecked
 def __lowercase_document(document_name: pathlib.Path) -> list:
     with document_name.open('r', encoding = 'utf-8') as document:
@@ -42,7 +42,7 @@ if __name__ == '__main__':
         default = 'd:/corpus_in')
     parser.add_argument(
         '-out', '--folder-out',
-        help = 'Folder containing the corpus having been transformed to only lowercase',
+        help = 'Folder containing the transformed corpus',
         default = 'd:/corpus_out')
     args = parser.parse_args()
     print(f'folder in: {args.folder_in}')

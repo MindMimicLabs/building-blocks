@@ -6,7 +6,7 @@ import utils as u
 from argparse import ArgumentParser
 from typeguard import typechecked
 
-# Iterates over all the documents in a corpus, removing all the NLTK stopwords
+# Iterates over all the documents in a corpus, transforming them by applying `__remove_stopwords_from_document()`
 @typechecked
 def remove_stopwords_from_corpus(path_in: pathlib.Path, path_out: pathlib.Path) -> None:
     u.assert_folder_is_readable(path_in)
@@ -26,7 +26,7 @@ def remove_stopwords_from_corpus(path_in: pathlib.Path, path_out: pathlib.Path) 
                     for sentence in sentences:
                         file_out.write(f'{sentence}\n')
 
-# removes the stopwords from a single document
+# Transforms a single document by removeing all the stopwords
 @typechecked
 def __remove_stopwords_from_document(document_name: pathlib.Path, stopwords: set) -> list:
     with document_name.open('r', encoding = 'utf-8') as document:
@@ -48,7 +48,7 @@ if __name__ == '__main__':
         default = 'd:/corpus_in')
     parser.add_argument(
         '-out', '--folder-out',
-        help = 'Folder containing the corpus free of stopwords',
+        help = 'Folder containing the transformed corpus',
         default = 'd:/corpus_out')
     args = parser.parse_args()
     print(f'folder in: {args.folder_in}')

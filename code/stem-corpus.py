@@ -5,7 +5,7 @@ from argparse import ArgumentParser
 from nltk import LancasterStemmer
 from typeguard import typechecked
 
-# Iterates over all the documents in a corpus, transforming them by stemming all the words
+# Iterates over all the documents in a corpus, transforming them by applying `__stem_document()`
 @typechecked
 def stem_corpus(path_in: pathlib.Path, path_out: pathlib.Path) -> None:
     u.assert_folder_is_readable(path_in)

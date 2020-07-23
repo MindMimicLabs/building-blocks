@@ -10,7 +10,7 @@ from typeguard import typechecked
 sent_tokenize = PunktSentenceTokenizer()
 word_tokenize = TreebankWordTokenizer()
 
-# Iterates over all the documents in a corpus creating a new collection of sentence tokenized documents
+# Iterates over all the documents in a corpus, transforming them by applying `__tokenize_document()`
 @typechecked
 def documents_to_corpus(path_in: pathlib.Path, path_out: pathlib.Path) -> None:
     u.assert_folder_is_readable(path_in)
@@ -28,7 +28,7 @@ def documents_to_corpus(path_in: pathlib.Path, path_out: pathlib.Path) -> None:
                     for sentence in sentences:
                         file_out.write(f'{sentence}\n')
 
-# Run Punkt then PENN Treebank to clean up sentences
+# Transforms a single document by applying Punkt then PENN Treebank to each sentences
 @typechecked
 def __tokenize_document(document_name: pathlib.Path) -> list:
     with document_name.open('r') as document:
@@ -51,7 +51,7 @@ if __name__ == '__main__':
         default = 'd:/corpus_in')
     parser.add_argument(
         '-out', '--folder-out',
-        help = 'Folder containing the sentence tokenized documents',
+        help = 'Folder containing the transformed corpus',
         default = 'd:/corpus_out')
     args = parser.parse_args()
     print(f'folder in: {args.folder_in}')
