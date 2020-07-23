@@ -22,12 +22,13 @@ The list of current scripts is below.
 In general, you want to first run [documents-to-corpus](./documents-to-corpus), then other scripts.
 Individual papers/projects/repos will instruct on the exact order in their `README.md`'s **Tabula Rasa** section. 
 
-1. [documents-to-corpus](./docs/documents-to-corpus.md)
-2. [corpus-to-reading-level](./docs/corpus-to-reading-level.md)
-3. [re-encode-corpus](./docs/re-encode-corpus.md)
-4. [(un)nest-corpus](./docs/unnest-corpus.md)
-5. [remove-stop-words](./docs/remove-stopwords-from-corpus.md)
-6. [lowercase-corpus](./docs/lowercase-corpus.md)
-7. [stem-corpus](./docs/stem-corpus.md)
-8. [cleanup-whitespace-in-corpus](./docs/cleanup-whitespace-in-corpus.md)
-9. [remove-punction-from-corpus](./docs/remove-punction-from-corpus.md)
+01. [documents-to-corpus](./docs/documents-to-corpus.md)
+02. [corpus-to-reading-level](./docs/corpus-to-reading-level.md)
+03. [re-encode-corpus](./docs/re-encode-corpus.md)
+04. [(un)nest-corpus](./docs/unnest-corpus.md)
+05. [remove-stop-words](./docs/remove-stopwords-from-corpus.md)
+06. [lowercase-corpus](./docs/lowercase-corpus.md)
+07. [stem-corpus](./docs/stem-corpus.md)
+08. [cleanup-whitespace-in-corpus](./docs/cleanup-whitespace-in-corpus.md)
+09. [remove-punction-from-corpus](./docs/remove-punction-from-corpus.md)
+10. [remove-numbers-from-corpus](./docs/remove-numbers-from-corpus.md)
