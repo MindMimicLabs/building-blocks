@@ -29,3 +29,4 @@ Individual papers/projects/repos will instruct on the exact order in their `READ
 5. [remove-stop-words](./docs/remove-stopwords-from-corpus.md)
 6. [lowercase-corpus](./docs/lowercase-corpus.md)
 7. [stem-corpus](./docs/stem-corpus.md)
+8. [cleanup-whitespace-in-corpus](./docs/cleanup-whitespace-in-corpus.md)
