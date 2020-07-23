@@ -18,5 +18,9 @@ The script is run in accordance with the [general form](../README.md#scripts)
 Below is the suggested text to add to the Methods and Materials section of your paper when using this building block.
 The references can be found [here](./references.bib)
 
-> This tool has not been accepted into a published paper, hence it has no boilerplate.
-> Yet.
+> Each document in the corpus underwent several pre-processing steps.
+> They were transformed under the following conditions:
+>
+> 1. Stopword removal
+>
+> The above augmentation resulted as exemplified in (figure xxx).
