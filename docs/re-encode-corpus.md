@@ -9,7 +9,7 @@ We can then write it out using `pathlib.Path.open(...)` which fixes the problem.
 
 The script is run in accordance with the [general form](../README.md#scripts)
 
-## Academic Boilerplate
+## Academic boilerplate
 
 This script should not be considered as a real transformation in terms of academic papers.
 Instead, it should be thought of as an accessibility step.

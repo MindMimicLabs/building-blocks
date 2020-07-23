@@ -7,7 +7,7 @@ The intent of this task is to allow a RNN to gradually learn the structure of la
 
 The script is run in accordance with the [general form](../README.md#scripts)
 
-## Academic Boilerplate
+## Academic boilerplate
 
 Below is the suggested text to add to the Methods and Materials section of your paper when using this building block.
 The references can be found [here](./references.bib)
