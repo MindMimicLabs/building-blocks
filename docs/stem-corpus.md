@@ -16,4 +16,4 @@ The references can be found [here](./references.bib)
 >
 > 1. Lancaster stemming [@hooper2005lancaster]
 >
-> The above augmentation resulted as exemplified in (figure xxx).
+> The above transformation resuls are exemplified in (figure xxx).

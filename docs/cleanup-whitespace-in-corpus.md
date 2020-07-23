@@ -16,4 +16,4 @@ The references can be found [here](./references.bib)
 >
 > 1. White-space normalization
 >
-> The above augmentation resulted as exemplified in (figure xxx).
+> The above transformation resuls are exemplified in (figure xxx).
