@@ -1,7 +1,6 @@
 import nltk
 import pathlib
 import shutil
-import uuid
 import progressbar as pb
 import utils as u
 from argparse import ArgumentParser
