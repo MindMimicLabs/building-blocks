@@ -27,3 +27,4 @@ Individual papers/projects/repos will instruct on the exact order in their `READ
 3. [re-encode-corpus](./docs/re-encode-corpus.md)
 4. [(un)nest-corpus](./docs/unnest-corpus.md)
 5. [remove-stop-words](./docs/remove-stopwords-from-corpus.md)
+6. [lowercase-corpus](./docs/lowercase-corpus.md)
