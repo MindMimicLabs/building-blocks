@@ -16,4 +16,5 @@ The references can be found [here](./references.bib)
 >
 > 1. White-space normalization
 >
-> The above transformation resuls are exemplified in (figure xxx).
+> The above transformation's results are exemplified in (figure xxx).
+> The transformation script can be found in the companion repository ^[http://www.github.com/{user}/{repo}].
