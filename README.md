@@ -30,3 +30,4 @@ Individual papers/projects/repos will instruct on the exact order in their `READ
 6. [lowercase-corpus](./docs/lowercase-corpus.md)
 7. [stem-corpus](./docs/stem-corpus.md)
 8. [cleanup-whitespace-in-corpus](./docs/cleanup-whitespace-in-corpus.md)
+9. [remove-punction-from-corpus](./docs/remove-punction-from-corpus.md)
