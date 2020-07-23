@@ -1,17 +1,19 @@
+import pathlib
+import string
+import time
+import progressbar as pb
+import statistics as stat
+import utils as u
 from argparse import ArgumentParser
 from collections import namedtuple
 from readability import Readability
 from readability.exceptions import ReadabilityException
-import pathlib
-import progressbar as pb
-import statistics as stat
-import utils as u
-import string
-import time
+from typeguard import typechecked
 
 sentenceplus = namedtuple('sentenceplus', 'text grade_level')
 
 # Iterates over all the documents in a corpus creating a new collection of documents on a per grade level basis.
+@typechecked
 def corpus_to_reading_level(path_in: pathlib.Path, path_out: pathlib.Path) -> None:
     u.assert_folder_is_readable(path_in)
     u.assert_folder_is_writable(path_out)
@@ -31,6 +33,7 @@ def corpus_to_reading_level(path_in: pathlib.Path, path_out: pathlib.Path) -> No
         print(f'No text documents found in {path_in}')
 
 # clean out any previous run
+@typechecked
 def __clean_grade_level_files(path_out: pathlib.Path) -> None:
     print('Clearing prior grade level files ... ', end = '', flush = True)
     for file_name in path_out.iterdir():
@@ -39,6 +42,7 @@ def __clean_grade_level_files(path_out: pathlib.Path) -> None:
     print('Done')
 
 # breaks a single document into sentences with each sentence haveing been evaluated for grade level
+@typechecked
 def __document_to_sentences(document_name: pathlib.Path) -> list:
     with document_name.open('r', encoding = 'utf-8') as document:
         sentences = document.readlines()
@@ -55,6 +59,7 @@ def __document_to_sentences(document_name: pathlib.Path) -> list:
 
 # calculate a single `grade_level` based on the 8 known measures
 # median is chosen over mean because the 8 measures are known to be not normally distributed
+@typechecked
 def __calculate_sentences_median_grade_level(line: str) -> int:
     line = __fluff_line(line)
     r = Readability(line)
@@ -76,6 +81,7 @@ def __calculate_sentences_median_grade_level(line: str) -> int:
 # smog requires 30 sentences
 # flesch_kincaid requires 100 words.
 # repeat everything till you have enough text
+@typechecked
 def __fluff_line(line: str) -> str:
     words = line.split()
     words = words * max(30, int(200/len(words)) + 1)        
@@ -83,6 +89,7 @@ def __fluff_line(line: str) -> str:
     return line
 
 # at the low and high end, `grade_level` offen does not make sense
+@typechecked
 def __ari(r: Readability) -> float:
     try:
         lvls = r.ari().grade_levels        
@@ -96,12 +103,14 @@ def __ari(r: Readability) -> float:
             return stat.mean([float(lvl) for lvl in lvls])
     except ReadabilityException:
         return None
+@typechecked
 def __coleman_liau(r: Readability) -> float:
     try:
         lvl = r.coleman_liau().grade_level
         return float(lvl)
     except ReadabilityException:
         return None
+@typechecked
 def __dale_chall(r: Readability) -> float:
     try:
         lvls = r.dale_chall().grade_levels        
@@ -113,12 +122,14 @@ def __dale_chall(r: Readability) -> float:
             return stat.mean([float(lvl) for lvl in lvls])
     except ReadabilityException:
         return None
+@typechecked
 def __flesch_kincaid(r: Readability) -> float:
     try:
         lvl = r.flesch_kincaid().grade_level
         return float(lvl)
     except ReadabilityException:
         return None
+@typechecked
 def __gunning_fog(r: Readability) -> float:
     try:
         lvl = r.gunning_fog().grade_level
@@ -132,18 +143,21 @@ def __gunning_fog(r: Readability) -> float:
             return float(lvl)
     except ReadabilityException:
         return None
+@typechecked
 def __linsear_write(r: Readability) -> float:
     try:
         lvl = r.linsear_write().grade_level
         return float(lvl)
     except ReadabilityException:
         return None
+@typechecked
 def __smog(r: Readability) -> float:
     try:
         lvl = r.smog(all_sentences = True).grade_level
         return float(lvl)
     except ReadabilityException:
         return None
+@typechecked
 def __spache(r: Readability) -> float:
     try:
         lvl = r.spache().grade_level
@@ -152,6 +166,7 @@ def __spache(r: Readability) -> float:
         return None
   
 # saves the sentences to grade level aproate files
+@typechecked
 def __save_new_documents(path_out: pathlib.Path, sentences: list) -> None:
     grade_levels = list(set(sentence.grade_level for sentence in sentences))
     widgets = ['Saving by grade level: ', pb.Percentage(), ' ', pb.Bar(marker = '.', left = '[', right = ']'), ' ', pb.ETA()]

@@ -1,15 +1,17 @@
+import pathlib
+import progressbar as pb
+import utils as u
 from argparse import ArgumentParser
 from collections import namedtuple
 from nltk.tokenize.punkt import PunktSentenceTokenizer
 from nltk.tokenize.treebank import TreebankWordTokenizer
-import pathlib
-import progressbar as pb
-import utils as u
+from typeguard import typechecked
 
 sent_tokenize = PunktSentenceTokenizer()
 word_tokenize = TreebankWordTokenizer()
 
 # Iterates over all the documents in a corpus creating a new collection of sentence tokenized documents
+@typechecked
 def documents_to_corpus(path_in: pathlib.Path, path_out: pathlib.Path) -> None:
     u.assert_folder_is_readable(path_in)
     u.assert_folder_is_writable(path_out)
@@ -27,6 +29,7 @@ def documents_to_corpus(path_in: pathlib.Path, path_out: pathlib.Path) -> None:
                         file_out.write(f'{sentence}\n')
 
 # Run Punkt then PENN Treebank to clean up sentences
+@typechecked
 def __tokenize_document(document_name: pathlib.Path) -> list:
     with document_name.open('r') as document:
         lines = document.readlines()
