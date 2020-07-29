@@ -23,10 +23,7 @@ def documents_to_corpus(path_in: pathlib.Path, path_out: pathlib.Path) -> None:
                 bar.update(i)
                 i = i + 1
                 sentences = __tokenize_document(file_name)
-                file_out = path_out.joinpath(f'{file_name.stem}.txt')
-                with file_out.open('w', encoding = 'utf-8') as file_out:
-                    for sentence in sentences:
-                        file_out.write(f'{sentence}\n')
+                u.write_document(path_out, file_name, sentences)
 
 # Transforms a single document by applying Punkt then PENN Treebank to each sentences
 @typechecked
