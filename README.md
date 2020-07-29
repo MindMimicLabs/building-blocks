@@ -33,3 +33,4 @@ Individual papers/projects/repos will instruct on the exact order in their `READ
 09. [remove-punction-from-corpus](./docs/remove-punction-from-corpus.md)
 10. [remove-numbers-from-corpus](./docs/remove-numbers-from-corpus.md)
 11. [vectorize-corpus](./docs/vectorize-corpus.md)
+12. [flatten-corpus](./docs/flatten-corpus.md)
