@@ -1,4 +1,4 @@
-# Cleanup whitespace
+# Remove whitespace
 
 Transforms all the documents in the corpus by removing blank lines, converting all whitespace charactors into a single space, and reducing multipul spaces into a single space.
 
