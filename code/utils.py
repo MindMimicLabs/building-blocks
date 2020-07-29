@@ -22,3 +22,10 @@ def is_corpus_document(file_path: pathlib.Path) -> bool:
         file_path.suffix.lower() == '.txt' and \
         not file_path.stem.startswith('_')
     return result
+
+@typechecked
+def write_document(path_out: pathlib.Path, file_name:  pathlib.Path, lines: list) -> None:
+    file_out = path_out.joinpath(file_name.name)
+    with file_out.open('w', encoding = 'utf-8') as file_out:
+        for line in lines:
+            file_out.write(f'{line}\n')
