@@ -22,7 +22,7 @@ def vectorize_corpus(path_in: pathlib.Path, path_out: pathlib.Path, path_control
     token_map = __map_tokens(tokens)
     __save_token_file(tokens, token_map, path_control)
     i = 1
-    widgets = [ 'Vectorising Files # ', pb.Counter(), ' ', pb.Timer(), ' ', pb.BouncingBar(marker = '.', left = '[', right = ']')]
+    widgets = [ 'Vectorizing Document # ', pb.Counter(), ' ', pb.Timer(), ' ', pb.BouncingBar(marker = '.', left = '[', right = ']')]
     with pb.ProgressBar(widgets = widgets) as bar:
         for file_name in path_in.iterdir():
             if u.is_corpus_document(file_name):
