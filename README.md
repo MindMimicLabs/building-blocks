@@ -22,15 +22,29 @@ The list of current scripts is below.
 In general, you want to first run [documents-to-corpus](./documents-to-corpus), then other scripts.
 Individual papers/projects/repos will instruct on the exact order in their `README.md`'s **Tabula Rasa** section. 
 
-01. [documents-to-corpus](./docs/documents-to-corpus.md)
-02. [corpus-to-reading-level](./docs/corpus-to-reading-level.md)
-03. [re-encode-corpus](./docs/re-encode-corpus.md)
-04. [(un)nest-corpus](./docs/unnest-corpus.md)
-05. [remove-stop-words](./docs/remove-stopwords-from-corpus.md)
-06. [lowercase-corpus](./docs/lowercase-corpus.md)
-07. [stem-corpus](./docs/stem-corpus.md)
-08. [remove-whitespace-from-corpus](./docs/remove-whitespace-from-corpus.md)
-09. [remove-punction-from-corpus](./docs/remove-punction-from-corpus.md)
-10. [remove-numbers-from-corpus](./docs/remove-numbers-from-corpus.md)
-11. [vectorize-corpus](./docs/vectorize-corpus.md)
-12. [flatten-corpus](./docs/flatten-corpus.md)
+**Data Pre-Processing**
+
+1. [remove-stop-words](./docs/remove-stopwords-from-corpus.md)
+2. [lowercase-corpus](./docs/lowercase-corpus.md)
+3. [stem-corpus](./docs/stem-corpus.md)
+4. [remove-whitespace-from-corpus](./docs/remove-whitespace-from-corpus.md)
+5. [remove-punction-from-corpus](./docs/remove-punction-from-corpus.md)
+6. [remove-numbers-from-corpus](./docs/remove-numbers-from-corpus.md)
+
+**Formatting**
+
+1. [documents-to-corpus](./docs/documents-to-corpus.md)
+2. [flatten-corpus](./docs/flatten-corpus.md)
+3. [re-encode-corpus](./docs/re-encode-corpus.md)
+
+**Deep Learning**
+
+1. [vectorize-corpus](./docs/vectorize-corpus.md)
+2. [normalize-corpus-by-padding](./docs/normalize-corpus-by-padding.md)
+2. [normalize-corpus-by-windowing](./docs/normalize-corpus-by-windowing.md)
+2. [normalize-corpus-by-zipfs-law](./docs/normalize-corpus-by-zipfs-law.md)
+
+**Misc**
+
+1. [corpus-to-reading-level](./docs/corpus-to-reading-level.md)
+2. [(un)nest-corpus](./docs/unnest-corpus.md)

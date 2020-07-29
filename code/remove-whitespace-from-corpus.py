@@ -11,7 +11,7 @@ def remove_whitespace_from_corpus(path_in: pathlib.Path, path_out: pathlib.Path)
     u.assert_folder_is_readable(path_in)
     u.assert_folder_is_writable(path_out)
     i = 1
-    widgets = [ 'Cleaning Corpus # ', pb.Counter(), ' ', pb.Timer(), ' ', pb.BouncingBar(marker = '.', left = '[', right = ']')]
+    widgets = [ 'Pre-Processing Document # ', pb.Counter(), ' ', pb.Timer(), ' ', pb.BouncingBar(marker = '.', left = '[', right = ']')]
     with pb.ProgressBar(widgets = widgets) as bar:
         for file_name in path_in.iterdir():
             if u.is_corpus_document(file_name):

@@ -14,7 +14,7 @@ def remove_stopwords_from_corpus(path_in: pathlib.Path, path_out: pathlib.Path) 
     i = 1
     stopwords = nltk.corpus.stopwords.words('english')
     stopwords = set(stopwords)
-    widgets = [ 'Removing Stopwords from Corpus # ', pb.Counter(), ' ', pb.Timer(), ' ', pb.BouncingBar(marker = '.', left = '[', right = ']')]
+    widgets = [ 'Pre-Processing Document # ', pb.Counter(), ' ', pb.Timer(), ' ', pb.BouncingBar(marker = '.', left = '[', right = ']')]
     with pb.ProgressBar(widgets = widgets) as bar:
         for file_name in path_in.iterdir():
             if u.is_corpus_document(file_name):
