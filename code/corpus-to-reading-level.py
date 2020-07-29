@@ -44,8 +44,8 @@ def __clean_grade_level_files(path_out: pathlib.Path) -> None:
 # breaks a single document into sentences with each sentence haveing been evaluated for grade level
 @typechecked
 def __document_to_sentences(document_name: pathlib.Path) -> list:
-    with document_name.open('r', encoding = 'utf-8') as document:
-        sentences = document.readlines()
+    lines = u.read_document(document_name)
+    sentences = lines
     sentences = [sentence.strip() for sentence in sentences]
     sentences = [sentence for sentence in sentences if len(sentence) > 0]
     widgets = ['Calculating grade level: ', pb.Percentage(), ' ', pb.Bar(marker = '.', left = '[', right = ']'), ' ', pb.ETA()]

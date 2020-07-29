@@ -22,11 +22,9 @@ def lowercase_corpus(path_in: pathlib.Path, path_out: pathlib.Path) -> None:
 # Transforms a single document by lowercaseing all the lines
 @typechecked
 def __lowercase_document(document_name: pathlib.Path) -> list:
-    with document_name.open('r', encoding = 'utf-8') as document:
-        lines = document.readlines()
+    lines = u.read_document(document_name)
     result = []
     for line in lines:
-        line = line.strip()
         line = line.lower()
         result.append(line)
     return result

@@ -29,3 +29,10 @@ def write_document(path_out: pathlib.Path, file_name:  pathlib.Path, lines: list
     with file_out.open('w', encoding = 'utf-8') as file_out:
         for line in lines:
             file_out.write(f'{line}\n')
+
+@typechecked
+def read_document(document_name:  pathlib.Path) -> list:
+    with document_name.open('r') as document:
+        lines = document.readlines()
+    lines = [line.rstrip('\n') for line in lines]
+    return lines

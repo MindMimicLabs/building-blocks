@@ -28,11 +28,10 @@ def documents_to_corpus(path_in: pathlib.Path, path_out: pathlib.Path) -> None:
 # Transforms a single document by applying Punkt then PENN Treebank to each sentences
 @typechecked
 def __tokenize_document(document_name: pathlib.Path) -> list:
-    with document_name.open('r') as document:
-        lines = document.readlines()
+    lines = u.read_document(document_name)
     result = []
     for line in lines:
-        sentences = sent_tokenize.tokenize(line.strip())
+        sentences = sent_tokenize.tokenize(line)
         for i in range(0, len(sentences)):
             sentence = sentences[i]
             words = word_tokenize.tokenize(sentence)

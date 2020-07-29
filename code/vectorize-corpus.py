@@ -33,10 +33,9 @@ def vectorize_corpus(path_in: pathlib.Path, path_out: pathlib.Path, path_control
 
 @typechecked
 def __append_tokens(tokens: dict, document_name: pathlib.Path) -> None:
-    with open(document_name, encoding = 'utf8') as document:
-        lines = document.readlines()
+    lines = u.read_document(document_name)
     for line in lines:
-        for token in line.strip().split():
+        for token in line.split():
             cnt = tokens.get(token, 0)
             tokens[token] = cnt + 1
 
@@ -62,11 +61,10 @@ def __save_token_file(tokens: dict, token_map: dict, path: pathlib.Path) -> None
 
 @typechecked
 def __vectorise_document(document_name: pathlib.Path, token_map: dict) -> list:
-    with open(document_name, encoding = 'utf8') as document:
-        lines = document.readlines()
+    lines = u.read_document(document_name)
     vectors = []
     for line in lines:
-        tokens = line.strip().split()
+        tokens = line.split()
         tokens = [token_map[token] for token in tokens]
         tokens = [str(token) for token in tokens]
         vector = ' '.join(tokens)

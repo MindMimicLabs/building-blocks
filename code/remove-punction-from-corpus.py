@@ -23,11 +23,9 @@ def remove_punction_from_corpus(path_in: pathlib.Path, path_out: pathlib.Path) -
 # Transforms a single document by removing punction
 @typechecked
 def __remove_punction_from_document(document_name: pathlib.Path) -> list:
-    with document_name.open('r', encoding = 'utf-8') as document:
-        lines = document.readlines()
+    lines = u.read_document(document_name)
     result = []
     for line in lines:
-        line = line.strip()
         chars = [c for c in line if c not in string.punctuation]
         line = ''.join(chars)
         result.append(line)

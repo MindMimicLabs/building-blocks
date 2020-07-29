@@ -26,11 +26,9 @@ def remove_stopwords_from_corpus(path_in: pathlib.Path, path_out: pathlib.Path) 
 # Transforms a single document by removeing all the stopwords
 @typechecked
 def __remove_stopwords_from_document(document_name: pathlib.Path, stopwords: set) -> list:
-    with document_name.open('r', encoding = 'utf-8') as document:
-        lines = document.readlines()
+    lines = u.read_document(document_name)
     result = []
     for line in lines:
-        line = line.strip()
         words = [token for token in line.split(' ')]
         words = [word for word in words if word not in stopwords]
         sentence = ' '.join(words)

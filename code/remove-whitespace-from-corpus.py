@@ -26,8 +26,7 @@ def remove_whitespace_from_corpus(path_in: pathlib.Path, path_out: pathlib.Path)
 # * reducing multipul spaces into a single space
 @typechecked
 def __cleanup_whitespace_in_document(document_name: pathlib.Path) -> list:
-    with document_name.open('r', encoding = 'utf-8') as document:
-        lines = document.readlines()
+    lines = u.read_document(document_name)
     result = []
     for line in lines:
         line = line.strip()
