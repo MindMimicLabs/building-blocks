@@ -18,8 +18,7 @@ def re_encode_corpus(path_in: pathlib.Path, path_out: pathlib.Path) -> None:
                 bar.update(i)
                 i = i + 1
                 sentences = __read_document(file_name)
-                file_out = path_out.joinpath(file_name.name)
-                __write_document(file_out, sentences)
+                u.write_document(path_out, file_name, sentences)
 
 # read the document with `codecs`
 @typechecked
@@ -28,13 +27,6 @@ def __read_document(document_name: pathlib.Path) -> list:
     with codecs.open(document_name, 'r', encoding = 'utf-8') as document:
         lines = document.readlines()
     return lines
-
-# write the document with `pathlib`
-@typechecked
-def __write_document(document_name: pathlib.Path, lines: list) -> None:
-    with document_name.open('w', encoding = 'utf-8') as document:
-        for line in lines:
-            document.write(f'{line.strip()}\n')
 
 if __name__ == '__main__':
     parser = ArgumentParser()
