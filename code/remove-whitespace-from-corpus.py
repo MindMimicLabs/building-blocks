@@ -7,7 +7,7 @@ from typeguard import typechecked
 
 # Iterates over all the documents in a corpus, transforming them by applying `__cleanup_whitespace_in_document()`
 @typechecked
-def cleanup_whitespace_in_corpus(path_in: pathlib.Path, path_out: pathlib.Path) -> None:
+def remove_whitespace_from_corpus(path_in: pathlib.Path, path_out: pathlib.Path) -> None:
     u.assert_folder_is_readable(path_in)
     u.assert_folder_is_writable(path_out)
     i = 1
@@ -64,4 +64,4 @@ if __name__ == '__main__':
     args = parser.parse_args()
     print(f'folder in: {args.folder_in}')
     print(f'folder out: {args.folder_out}')
-    cleanup_whitespace_in_corpus(pathlib.Path(args.folder_in), pathlib.Path(args.folder_out))
+    remove_whitespace_from_corpus(pathlib.Path(args.folder_in), pathlib.Path(args.folder_out))
