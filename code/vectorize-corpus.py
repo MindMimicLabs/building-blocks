@@ -7,7 +7,7 @@ from typeguard import typechecked
 
 # Iterates over all the documents in a corpus recording all tokens, then iterates again to produce vectorized files
 @typechecked
-def vectorize_corpus(path_in: pathlib.Path, path_out: pathlib.Path, path_token: pathlib.Path) -> None:
+def vectorize_corpus(path_in: pathlib.Path, path_out: pathlib.Path, path_control: pathlib.Path) -> None:
     u.assert_folder_is_readable(path_in)
     u.assert_folder_is_writable(path_out)
     i = 1
@@ -20,7 +20,7 @@ def vectorize_corpus(path_in: pathlib.Path, path_out: pathlib.Path, path_token: 
                 i = i + 1
                 __append_tokens(tokens, file_name)
     token_map = __map_tokens(tokens)
-    __save_token_file(tokens, token_map, path_token)
+    __save_token_file(tokens, token_map, path_control)
     i = 1
     widgets = [ 'Vectorising Files # ', pb.Counter(), ' ', pb.Timer(), ' ', pb.BouncingBar(marker = '.', left = '[', right = ']')]
     with pb.ProgressBar(widgets = widgets) as bar:
@@ -84,11 +84,11 @@ if __name__ == '__main__':
         help = 'Folder containing the vectorise documents',
         default = 'd:/corpus_out')
     parser.add_argument(
-        '-tok', '--token',
-        help = 'Token file to allow the re-nesting of documents',
+        '-ctrl', '--control',
+        help = 'Control file to allow the re-nesting of documents',
         default = 'd:/control.csv')
     args = parser.parse_args()
     print(f'folder in: {args.folder_in}')
     print(f'folder out: {args.folder_out}')
-    print(f'token file: {args.token}')
-    vectorize_corpus(pathlib.Path(args.folder_in), pathlib.Path(args.folder_out), pathlib.Path(args.token))
+    print(f'control file: {args.control}')
+    vectorize_corpus(pathlib.Path(args.folder_in), pathlib.Path(args.folder_out), pathlib.Path(args.control))

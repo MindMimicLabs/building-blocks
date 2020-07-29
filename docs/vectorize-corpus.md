@@ -1,17 +1,19 @@
  # Vectorize Corpus
 
-The standard process we use deals with only a single folder.
-In some cases, we want to process more than one folder as a single pass.
-Multi folder processing usually happens when we are provided a file structure containing grouped documents.
-This process intends to convert (unnest) a hierarchical folder structure to a single folder, run some other step (i.e., tokenization), then convert back (nest) to the hierarchy.
+A corpus is composed of a collection document.
+A document is composed of a collection of words.
+Deep Learning networks typically deal with _integers_, not words.
+Vectorizing a corpus is the process of collecting all the words in all the documents and assigning a _unique_ integer to represent the word.
+Word order is maintained as part of vectorization.
 
 ## Run the script
 
 These scripts need to be run in a modified manner compared to the [general form](../README.md#scripts).
-There is another parameter called `token` that is needed to preserve the reverse operation.
+There is another parameter called `control` that is needed to preserve the reverse operation.
+The `control` file can also be used for filtering or vectorising addtional documents later.
 Please update step 4 in the [general form](../README.md#scripts) to be:
 
-* Run `python vectorize-corpus.py -in d:/corpus_in -out d:/corpus_out -tok d:/tokens.csv`.
+* Run `python vectorize-corpus.py -in d:/corpus_in -out d:/corpus_out -ctrl d:/control.csv`.
 
 ## Academic Boilerplate
 
