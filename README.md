@@ -20,7 +20,7 @@ Unless otherwise noted, all scripts follow the same execution path.
 
 The list of current scripts is below.
 In general, you want to first run [documents-to-corpus](./documents-to-corpus), then other scripts.
-Individual papers/projects/repos will instruct on the exact order in their `README.md`'s **Tabula Rasa** section. 
+Individual papers/projects/repos will instruct on the exact order in their `README.md`'s **Tabula Rasa** section.
 
 **Data Pre-Processing**
 
