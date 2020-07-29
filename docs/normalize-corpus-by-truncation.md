@@ -1,7 +1,7 @@
-# Normalize Corpus by Padding
+# Normalize Corpus by Truncation
 
 Deep Learning networks typically need a fixed shape for their inputs.
-This script right pads documents below a given length `xxx`. 
+This script truncates all documents above a given length `xxx`.
 This script is intended to be run _after_ [vectorization](./vectorize-corpus.md)
 
 ## Run the script
@@ -20,6 +20,6 @@ The references can be found [here](./references.bib)
 > Each document was normalized to provide a consistent input shape to the deep learning network.
 > The below normalization steps were undertaken:
 >
-> 1. Documents below length `xxx` were right padded with zeros.
+> 1. Documents above length `xxx` were truncated.
 >
 > The normalization script can be found in the companion repository ^[http://www.github.com/{user}/{repo}].

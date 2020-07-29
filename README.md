@@ -41,8 +41,9 @@ Individual papers/projects/repos will instruct on the exact order in their `READ
 
 1. [vectorize-corpus](./docs/vectorize-corpus.md)
 2. [normalize-corpus-by-padding](./docs/normalize-corpus-by-padding.md)
-2. [normalize-corpus-by-windowing](./docs/normalize-corpus-by-windowing.md)
-2. [normalize-corpus-by-zipfs-law](./docs/normalize-corpus-by-zipfs-law.md)
+3. [normalize-corpus-by-truncation](./docs/normalize-corpus-by-truncation.md)
+4. [normalize-corpus-by-windowing](./docs/normalize-corpus-by-windowing.md)
+5. [normalize-corpus-by-zipfs-law](./docs/normalize-corpus-by-zipfs-law.md)
 
 **Misc**
 

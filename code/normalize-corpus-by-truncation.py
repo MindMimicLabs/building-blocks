@@ -5,9 +5,9 @@ import utils as u
 from argparse import ArgumentParser
 from typeguard import typechecked
 
-# Iterates over all the documents in a corpus, normalizing them by applying `__normalize_document_by_padding()`
+# Iterates over all the documents in a corpus, normalizing them by applying `__normalize_document_by_truncation()`
 @typechecked
-def normalize_corpus_by_padding(path_in: pathlib.Path, path_out: pathlib.Path, min_length: int) -> None:
+def normalize_corpus_by_truncation(path_in: pathlib.Path, path_out: pathlib.Path, max_length: int) -> None:
     u.assert_folder_is_readable(path_in)
     u.assert_folder_is_writable(path_out)
     i = 1
@@ -17,22 +17,22 @@ def normalize_corpus_by_padding(path_in: pathlib.Path, path_out: pathlib.Path, m
             if u.is_corpus_document(file_name):
                 bar.update(i)
                 i = i + 1
-                sentences = __normalize_document_by_padding(file_name, min_length)
+                sentences = __normalize_document_by_truncation(file_name, min_length)
                 u.write_document(path_out, file_name, sentences)
 
-# Makes sure a document has at least `min_length` tokens. If not, it adds '0's till that threashold is reached
+# Makes sure a document has at most `max_length` tokens. If not, any token beond that limit is removed.
 @typechecked
-def __normalize_document_by_padding(document_name: pathlib.Path, min_length: int) -> list:    
+def __normalize_document_by_truncation(document_name: pathlib.Path, max_length: int) -> list:    
     lines = u.read_document(document_name)
     results = []
     for line in lines:
         tokens = line.split()
-        min_length = min_length - len(tokens)
-        results.append(' '.join(tokens))
-    if min_length > 0:
-        tokens = ['0' for _ in range(0, min_length)]
-        results.append(' '.join(tokens))
-    return results    
+        if len(tokens) > max_length:
+            tokens = tokens[0:max_length]
+        max_length = max_length - len(tokens)
+        if len(tokens) > 0:
+            results.append(' '.join(tokens))
+    return results   
 
 if __name__ == '__main__':
     parser = ArgumentParser()
@@ -45,12 +45,12 @@ if __name__ == '__main__':
         help = 'Folder containing the vectorise documents',
         default = 'd:/corpus_out')
     parser.add_argument(
-        '-l', '--min-length',
-        help = 'Min length the document must take on',
+        '-l', '--max-length',
+        help = 'Max length the document can take on',
         type = int,
         default = '1000')
     args = parser.parse_args()
     print(f'folder in: {args.folder_in}')
     print(f'folder out: {args.folder_out}')
-    print(f'min length: {args.min_length}')
-    normalize_corpus_by_padding(pathlib.Path(args.folder_in), pathlib.Path(args.folder_out), int(args.min_length))
+    print(f'max length: {args.max_length}')
+    normalize_corpus_by_truncation(pathlib.Path(args.folder_in), pathlib.Path(args.folder_out), int(args.max_length))
