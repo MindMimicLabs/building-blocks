@@ -19,7 +19,7 @@ Unless otherwise noted, all scripts follow the same execution path.
    You should change the input and output paths as desired.
 
 The list of current scripts is below.
-In general, you want to first run [documents-to-corpus](./documents-to-corpus), then other scripts.
+In general, you want to first run [documents-to-corpus](./docs/documents-to-corpus.md), then other scripts.
 Individual papers/projects/repos will instruct on the exact order in their `README.md`'s **Tabula Rasa** section.
 
 **Data Pre-Processing**
